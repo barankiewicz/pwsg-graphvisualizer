@@ -1,0 +1,10 @@
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\bin\Debug\WinFormslab2.exe.config
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\bin\Debug\WinFormslab2.exe
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\bin\Debug\WinFormslab2.pdb
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\obj\Debug\WinFormslab2.csprojResolveAssemblyReference.cache
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\obj\Debug\WinFormslab2.Properties.Resources.resources
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\obj\Debug\WinFormslab2.csproj.GenerateResource.Cache
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\obj\Debug\WinFormslab2.csproj.CoreCompileInputs.cache
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\obj\Debug\WinFormslab2.exe
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\obj\Debug\WinFormslab2.pdb
+h:\Windows7\Desktop\PWSG\WinFormslab2\WinFormslab2\obj\Debug\WinFormslab2.Form1.resources

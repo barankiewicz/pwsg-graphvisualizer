@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,7 +13,9 @@ namespace WinFormslab2
 {
     public partial class Form1 : Form
     {
-        Graph graph = new Graph(15, 3.5f);
+        int r;
+        float wid;
+        Graph graph;
         Graphics g;
 
         public Form1()
@@ -30,6 +33,10 @@ namespace WinFormslab2
             mainWind.Height = area.Height;
             colorShower.BackColor = Color.Black;
             g = mainWind.CreateGraphics();
+
+            r = 15;
+            wid = 3.5f;
+            graph = new Graph(r, wid);
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -49,7 +56,6 @@ namespace WinFormslab2
 
         private void mainWind_MouseDown(object sender, MouseEventArgs e)
         {
-            //CREATE A VERTEX
             var loc = e.Location;
             graph.AddVertex(e.Location, colorShower.BackColor, g);
         }
@@ -57,7 +63,7 @@ namespace WinFormslab2
         private void deleteGraphButton_Click(object sender, EventArgs e)
         {
             mainWind.Refresh();
-            graph = new Graph(15, 3.5f);
+            graph = new Graph(r, wid);
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -66,9 +72,20 @@ namespace WinFormslab2
                 Graph.WriteToFile(graph, saveFileDialog.FileName);
         }
 
-        private void openFileDialog_FileOk(object sender, CancelEventArgs e)
+        private void importButton_Click(object sender, EventArgs e)
         {
-
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try{
+                    graph = Graph.ReadFromFile(openFileDialog.FileName);
+                } catch (SerializationException)
+                {
+                    MessageBox.Show("Uszkodzony plik .graph!", "Uszkodzony plik.graph!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+                
+            mainWind.Refresh();
+            graph.DrawGraph(g);
         }
     }
 }

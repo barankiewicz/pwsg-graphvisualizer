@@ -260,6 +260,7 @@
             this.importButton.TabIndex = 2;
             this.importButton.Text = "Import";
             this.importButton.UseVisualStyleBackColor = true;
+            this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // saveButton
             // 

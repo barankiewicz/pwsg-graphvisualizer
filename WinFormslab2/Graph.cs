@@ -16,26 +16,24 @@ namespace WinFormslab2
         private Color color;
         private Point location;
         private int r;
-        Pen mainPen;
-        SolidBrush drawBrush;
+        private float wid;
 
         public Vertex(Point _loc, int _r, Color _col, float _wid)
         {
             color = _col;
             location = _loc;
             r = _r;
-            mainPen = new Pen(_col, _wid);
-            drawBrush = new SolidBrush(_col);
+            wid = _wid;
         }
 
         public void Draw(Graphics g, string s)
         {
-            g.DrawEllipse(mainPen, new Rectangle(location, new Size(2*r, 2*r)));
+            g.DrawEllipse(new Pen(color, wid), new Rectangle(location, new Size(2*r, 2*r)));
             PointF stringLocation = new PointF(location.X + r, location.Y + r);
             StringFormat sf = new StringFormat();
             sf.LineAlignment = StringAlignment.Center;
             sf.Alignment = StringAlignment.Center;
-            g.DrawString(s, new Font("Arial", 10), drawBrush, stringLocation, sf);
+            g.DrawString(s, new Font("Arial", 10), new SolidBrush(color), stringLocation, sf);
         }
 
         public Point GetLocation()

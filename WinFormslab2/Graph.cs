@@ -53,16 +53,23 @@ namespace WinFormslab2
             wid = _wid;
         }
 
-        public void AddVertex(Point loc, Color col, Graphics g)
+        public bool DoCollide(Point loc)
         {
             foreach (Vertex v in vertices)
             {
                 Point neighLoc = v.GetLocation();
-                int x = neighLoc.X;
-                int y = neighLoc.Y;
-                if (Math.Abs(loc.X - x) < 2*r && Math.Abs(loc.Y - y) < 2.5*r)
-                    return;
+                int x = neighLoc.X + r;
+                int y = neighLoc.Y + r;
+                if (Math.Abs(loc.X - x) < 2 * r && Math.Abs(loc.Y - y) < 2 * r)
+                    return true;
             }
+            return false;
+        }
+
+        public void AddVertex(Point loc, Color col, Graphics g)
+        {
+            if (DoCollide(loc))
+                return;
 
             Point circleLocation = new Point(loc.X - r, loc.Y - r);
             vertices.Add(new Vertex(circleLocation, r, col, wid));

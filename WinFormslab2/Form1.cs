@@ -61,13 +61,10 @@ namespace WinFormslab2
             graph.AddVertex(e.Location, colorShower.BackColor, g);
         }
 
-        private void mainWind_Click(object sender, EventArgs e)
+        private void deleteGraphButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void mainWind_Paint(object sender, PaintEventArgs e)
-        {
+            mainWind.Refresh();
+            graph = new Graph(15, 3.5f);
         }
     }
 }

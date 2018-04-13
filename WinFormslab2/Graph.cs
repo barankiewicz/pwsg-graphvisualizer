@@ -28,7 +28,7 @@ namespace WinFormslab2
         public void Draw(Graphics g, string s)
         {
             g.DrawEllipse(mainPen, new Rectangle(location, new Size(2*r, 2*r)));
-            PointF stringLocation = new PointF(location.X - r, location.Y - r);
+            PointF stringLocation = new PointF(location.X + r, location.Y + r);
             StringFormat sf = new StringFormat();
             sf.LineAlignment = StringAlignment.Center;
             sf.Alignment = StringAlignment.Center;

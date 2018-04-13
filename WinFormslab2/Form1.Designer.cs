@@ -71,8 +71,6 @@
             this.mainWind.Size = new System.Drawing.Size(584, 562);
             this.mainWind.TabIndex = 1;
             this.mainWind.TabStop = false;
-            this.mainWind.Click += new System.EventHandler(this.mainWind_Click);
-            this.mainWind.Paint += new System.Windows.Forms.PaintEventHandler(this.mainWind_Paint);
             this.mainWind.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseDown);
             // 
             // menuPanel
@@ -288,6 +286,7 @@
             this.deleteGraphButton.TabIndex = 1;
             this.deleteGraphButton.Text = "Usun Graf";
             this.deleteGraphButton.UseVisualStyleBackColor = true;
+            this.deleteGraphButton.Click += new System.EventHandler(this.deleteGraphButton_Click);
             // 
             // Form1
             // 

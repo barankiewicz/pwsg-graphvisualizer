@@ -34,6 +34,11 @@ namespace WinFormslab2
             sf.Alignment = StringAlignment.Center;
             g.DrawString(s, new Font("Arial", 10), drawBrush, stringLocation, sf);
         }
+
+        public Point GetLocation()
+        {
+            return location;
+        }
     }
     class Graph
     {
@@ -50,6 +55,15 @@ namespace WinFormslab2
 
         public void AddVertex(Point loc, Color col, Graphics g)
         {
+            foreach (Vertex v in vertices)
+            {
+                Point neighLoc = v.GetLocation();
+                int x = neighLoc.X;
+                int y = neighLoc.Y;
+                if (Math.Abs(loc.X - x) < 2*r && Math.Abs(loc.Y - y) < 2.5*r)
+                    return;
+            }
+
             Point circleLocation = new Point(loc.X - r, loc.Y - r);
             vertices.Add(new Vertex(circleLocation, r, col, wid));
             vertices.Last().Draw(g, vertices.Count.ToString());

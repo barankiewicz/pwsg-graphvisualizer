@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormslab2", "WinFormslab2\WinFormslab2.csproj", "{29FB93BF-1754-4888-8C22-88AB3EF43DAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pwsg-graphvisualizer", "WinFormslab2\pwsg-graphvisualizer.csproj", "{29FB93BF-1754-4888-8C22-88AB3EF43DAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

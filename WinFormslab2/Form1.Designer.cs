@@ -43,6 +43,11 @@
             this.importButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.pictureContainer = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.deleteVertexButton = new System.Windows.Forms.Button();
+            this.deleteGraphButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.mainWind)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.editBox.SuspendLayout();
@@ -51,15 +56,19 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.saveBox.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainWind
             // 
-            this.mainWind.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainWind.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainWind.BackColor = System.Drawing.Color.White;
             this.mainWind.Location = new System.Drawing.Point(0, 0);
             this.mainWind.Name = "mainWind";
-            this.mainWind.Size = new System.Drawing.Size(784, 562);
-            this.mainWind.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.mainWind.Size = new System.Drawing.Size(584, 562);
             this.mainWind.TabIndex = 1;
             this.mainWind.TabStop = false;
             this.mainWind.Click += new System.EventHandler(this.mainWind_Click);
@@ -86,6 +95,7 @@
             // 
             // editBox
             // 
+            this.editBox.Controls.Add(this.tableLayoutPanel4);
             this.editBox.Controls.Add(this.tableLayoutPanel1);
             this.editBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.editBox.Location = new System.Drawing.Point(3, 3);
@@ -102,13 +112,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel1.Controls.Add(this.colorShower, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.colorButton, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(188, 297);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(188, 32);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // colorShower
@@ -160,7 +170,6 @@
             // 
             this.plLangButton.AutoSize = true;
             this.plLangButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plLangButton.Enabled = false;
             this.plLangButton.Location = new System.Drawing.Point(3, 3);
             this.plLangButton.Name = "plLangButton";
             this.plLangButton.Size = new System.Drawing.Size(182, 41);
@@ -172,7 +181,6 @@
             // 
             this.engLangButton.AutoSize = true;
             this.engLangButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.engLangButton.Enabled = false;
             this.engLangButton.Location = new System.Drawing.Point(3, 50);
             this.engLangButton.Name = "engLangButton";
             this.engLangButton.Size = new System.Drawing.Size(182, 42);
@@ -209,7 +217,6 @@
             // importButton
             // 
             this.importButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.importButton.Enabled = false;
             this.importButton.Location = new System.Drawing.Point(3, 50);
             this.importButton.Name = "importButton";
             this.importButton.Size = new System.Drawing.Size(182, 42);
@@ -220,7 +227,6 @@
             // saveButton
             // 
             this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveButton.Enabled = false;
             this.saveButton.Location = new System.Drawing.Point(3, 3);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(182, 41);
@@ -228,13 +234,69 @@
             this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
             // 
+            // pictureContainer
+            // 
+            this.pictureContainer.AutoSize = true;
+            this.pictureContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pictureContainer.Location = new System.Drawing.Point(3, 3);
+            this.pictureContainer.Name = "pictureContainer";
+            this.pictureContainer.Size = new System.Drawing.Size(0, 0);
+            this.pictureContainer.TabIndex = 3;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.mainWind);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(584, 562);
+            this.panel1.TabIndex = 4;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.deleteVertexButton, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.deleteGraphButton, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 48);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(188, 265);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // deleteVertexButton
+            // 
+            this.deleteVertexButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteVertexButton.Location = new System.Drawing.Point(3, 3);
+            this.deleteVertexButton.Name = "deleteVertexButton";
+            this.deleteVertexButton.Size = new System.Drawing.Size(182, 24);
+            this.deleteVertexButton.TabIndex = 0;
+            this.deleteVertexButton.Text = "Usun Wierzchołek";
+            this.deleteVertexButton.UseVisualStyleBackColor = true;
+            // 
+            // deleteGraphButton
+            // 
+            this.deleteGraphButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteGraphButton.Location = new System.Drawing.Point(3, 33);
+            this.deleteGraphButton.Name = "deleteGraphButton";
+            this.deleteGraphButton.Size = new System.Drawing.Size(182, 24);
+            this.deleteGraphButton.TabIndex = 1;
+            this.deleteGraphButton.Text = "Usun Graf";
+            this.deleteGraphButton.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pictureContainer);
             this.Controls.Add(this.menuPanel);
-            this.Controls.Add(this.mainWind);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -250,6 +312,8 @@
             this.tableLayoutPanel2.PerformLayout();
             this.saveBox.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,6 +335,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel pictureContainer;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Button deleteVertexButton;
+        private System.Windows.Forms.Button deleteGraphButton;
     }
 }
 

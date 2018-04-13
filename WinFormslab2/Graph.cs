@@ -29,10 +29,12 @@ namespace WinFormslab2
         public void Draw(Graphics g, string s, bool selected)
         {
             var temp = new Pen(color, wid);
-            temp.DashPattern = new float[] { 1, 2, 3, 4 };
+            temp.DashPattern = new float[] { 1, 1.2f };
             if (selected)
                 g.DrawEllipse(temp, new Rectangle(location, new Size(2 * r, 2 * r)));
-            g.DrawEllipse(new Pen(color, wid), new Rectangle(location, new Size(2*r, 2*r)));
+            else
+                g.DrawEllipse(new Pen(color, wid), new Rectangle(location, new Size(2 * r, 2 * r)));
+
             PointF stringLocation = new PointF(location.X + r, location.Y + r);
             StringFormat sf = new StringFormat();
             sf.LineAlignment = StringAlignment.Center;
@@ -78,6 +80,11 @@ namespace WinFormslab2
         public void SetSelected(Vertex v)
         {
             selected = v;
+        }
+
+        public Vertex GetSelected()
+        {
+            return selected;
         }
 
         public void AddVertex(Point loc, Color col, Graphics g)

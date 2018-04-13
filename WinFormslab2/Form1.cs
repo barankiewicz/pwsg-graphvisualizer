@@ -71,16 +71,26 @@ namespace WinFormslab2
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    graph.AddVertex(e.Location, colorShower.BackColor, g);
-                    break;
-                case MouseButtons.Right:
-                    var v = graph.ClickedOn(loc);
-                    if(v!=null)
+                    if(graph.ClickedOn(loc) == null)
+                        graph.AddVertex(e.Location, colorShower.BackColor, g);
+                    else
                     {
-                        graph.SetSelected(v);
+                        graph.AddEdge(graph.ClickedOn(loc), graph.GetSelected(), g);
                         mainWind.Refresh();
                         graph.DrawGraph(g);
                     }
+
+                    break;
+                case MouseButtons.Right:
+                    var v = graph.ClickedOn(loc);
+
+                    if (v != null)
+                        graph.SetSelected(v);
+                    else
+                        graph.SetSelected(null);
+
+                    mainWind.Refresh();
+                    graph.DrawGraph(g);
                     break;
                 case MouseButtons.Middle:
                     break;

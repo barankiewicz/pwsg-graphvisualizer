@@ -44,7 +44,9 @@ namespace WinFormslab2
 
         public Point GetLocation()
         {
-            return location;
+            var newLoc = location;
+            newLoc.Offset(r, r);
+            return newLoc;
         }
 
         public void SetColor(Color _color)
@@ -54,9 +56,30 @@ namespace WinFormslab2
     }
 
     [Serializable]
+    class Edge
+    {
+        private Vertex v1, v2;
+
+        public Vertex from { get { return v1; } }
+        public Vertex to { get { return v2; } }
+
+        public Edge(Vertex _from, Vertex _to)
+        {
+            v1 = _from;
+            v2 = _to;
+        }
+
+        public void Draw(Graphics g)
+        {
+            g.DrawLine(new Pen(Color.Black, 3.5f), from.GetLocation(), to.GetLocation());
+        }
+    }
+
+    [Serializable]
     class Graph
     {
         private List<Vertex> vertices;
+        private List<Edge> edges;
         private int r;
         private float wid;
         private Vertex selected;
@@ -64,6 +87,7 @@ namespace WinFormslab2
         public Graph(int _r, float _wid)
         {
             vertices = new List<Vertex>();
+            edges = new List<Edge>();
             r = _r;
             wid = _wid;
             selected = null;
@@ -74,8 +98,8 @@ namespace WinFormslab2
             foreach (Vertex v in vertices)
             {
                 Point neighLoc = v.GetLocation();
-                int x = neighLoc.X + r;
-                int y = neighLoc.Y + r;
+                int x = neighLoc.X;
+                int y = neighLoc.Y;
                 if (Math.Abs(click.X - x) < 2 * r && Math.Abs(click.Y - y) < 2 * r)
                     return v;
             }
@@ -113,6 +137,35 @@ namespace WinFormslab2
                 }
                 vertices[i].Draw(g, (i + 1).ToString(), false);
             }
+
+            foreach (Edge e in edges)
+                e.Draw(g);
+        }
+
+        public bool ExistEdge(Vertex v1, Vertex v2)
+        {
+            foreach (Edge e in edges)
+                if ((e.from == v1 && e.to == v2) || (e.from == v2 && e.to == v1))
+                    return true;
+            return false;
+        }
+
+        public bool AddEdge(Vertex v1, Vertex v2, Graphics g)
+        {
+            if (v1 == null || v2 == null)
+                return false;
+
+            for(int i = 0; i < edges.Count; i++)
+            {
+                if ((edges[i].from == v1 && edges[i].to == v2) || (edges[i].from == v2 && edges[i].to == v1))
+                {
+                    edges.Remove(edges[i]);
+                    return false;
+                }    
+            }
+            edges.Add(new Edge(v1, v2));
+            edges.Last().Draw(g);
+            return true;
         }
 
         public static void WriteToFile(Graph graph, string path)

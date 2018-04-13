@@ -52,7 +52,17 @@ namespace WinFormslab2
         private void colorButton_Click(object sender, EventArgs e)
         {
             if(colorDialog1.ShowDialog() == DialogResult.OK)
+            {
                 colorShower.BackColor = colorDialog1.Color;
+
+                Vertex v = graph.GetSelected();
+                if (v != null)
+                {
+                    v.SetColor(colorDialog1.Color);
+                    mainWind.Refresh();
+                    graph.DrawGraph(g);
+                }
+            }
         }
 
         private void mainWind_MouseDown(object sender, MouseEventArgs e)

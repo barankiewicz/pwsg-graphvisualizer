@@ -46,6 +46,11 @@ namespace WinFormslab2
         {
             return location;
         }
+
+        public void SetColor(Color _color)
+        {
+            color = _color;
+        }
     }
 
     [Serializable]

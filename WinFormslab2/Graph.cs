@@ -91,7 +91,7 @@ namespace WinFormslab2
 
         public static void WriteToFile(Graph graph, string path)
         {
-            var fs = new FileStream(path, FileMode.Create);
+            var fs = new FileStream(path, FileMode.Create, FileAccess.Write);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(fs, graph);
             fs.Close();
@@ -99,7 +99,7 @@ namespace WinFormslab2
 
         public static Graph ReadFromFile(string path)
         {
-            var fs = new FileStream(path, FileMode.Open);
+            var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             BinaryFormatter bf = new BinaryFormatter();
             Graph obj = (Graph)bf.Deserialize(fs);
             fs.Close();

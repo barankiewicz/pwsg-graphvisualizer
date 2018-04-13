@@ -5,9 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace WinFormslab2
 {
+    [Serializable]
     class Vertex
     {
         private Color color;
@@ -40,6 +43,8 @@ namespace WinFormslab2
             return location;
         }
     }
+
+    [Serializable]
     class Graph
     {
         private List<Vertex> vertices;
@@ -53,22 +58,22 @@ namespace WinFormslab2
             wid = _wid;
         }
 
-        public bool DoCollide(Point loc)
+        public Vertex ClickedOn(Point click)
         {
             foreach (Vertex v in vertices)
             {
                 Point neighLoc = v.GetLocation();
                 int x = neighLoc.X + r;
                 int y = neighLoc.Y + r;
-                if (Math.Abs(loc.X - x) < 2 * r && Math.Abs(loc.Y - y) < 2 * r)
-                    return true;
+                if (Math.Abs(click.X - x) < 2 * r && Math.Abs(click.Y - y) < 2 * r)
+                    return v;
             }
-            return false;
+            return null;
         }
 
         public void AddVertex(Point loc, Color col, Graphics g)
         {
-            if (DoCollide(loc))
+            if (ClickedOn(loc) != null)
                 return;
 
             Point circleLocation = new Point(loc.X - r, loc.Y - r);
@@ -82,6 +87,23 @@ namespace WinFormslab2
             {
                 vertices[i].Draw(g, (i + 1).ToString());
             }
+        }
+
+        public static void WriteToFile(Graph graph, string path)
+        {
+            var fs = new FileStream(path, FileMode.Create);
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(fs, graph);
+            fs.Close();
+        }
+
+        public static Graph ReadFromFile(string path)
+        {
+            var fs = new FileStream(path, FileMode.Open);
+            BinaryFormatter bf = new BinaryFormatter();
+            Graph obj = (Graph)bf.Deserialize(fs);
+            fs.Close();
+            return obj;
         }
     }
 }

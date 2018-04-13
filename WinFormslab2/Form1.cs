@@ -51,13 +51,6 @@ namespace WinFormslab2
         {
             //CREATE A VERTEX
             var loc = e.Location;
-            //foreach (Point location in locations)
-            //{
-            //    int x = location.X;
-            //    int y = location.Y;
-            //    if (Math.Abs(loc.X - x) < 60 && Math.Abs(loc.Y - y) < 60)
-            //        return;
-            //}
             graph.AddVertex(e.Location, colorShower.BackColor, g);
         }
 
@@ -65,6 +58,17 @@ namespace WinFormslab2
         {
             mainWind.Refresh();
             graph = new Graph(15, 3.5f);
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                Graph.WriteToFile(graph, saveFileDialog.FileName);
+        }
+
+        private void openFileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

@@ -31,6 +31,9 @@
             this.mainWind = new System.Windows.Forms.PictureBox();
             this.menuPanel = new System.Windows.Forms.TableLayoutPanel();
             this.editBox = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.deleteVertexButton = new System.Windows.Forms.Button();
+            this.deleteGraphButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.colorShower = new System.Windows.Forms.Panel();
             this.colorButton = new System.Windows.Forms.Button();
@@ -45,19 +48,18 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.pictureContainer = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.deleteVertexButton = new System.Windows.Forms.Button();
-            this.deleteGraphButton = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.mainWind)).BeginInit();
             this.menuPanel.SuspendLayout();
             this.editBox.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.langBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.saveBox.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainWind
@@ -102,6 +104,43 @@
             this.editBox.TabIndex = 0;
             this.editBox.TabStop = false;
             this.editBox.Text = "Edycja";
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.deleteVertexButton, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.deleteGraphButton, 0, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 48);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(188, 265);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // deleteVertexButton
+            // 
+            this.deleteVertexButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteVertexButton.Location = new System.Drawing.Point(3, 3);
+            this.deleteVertexButton.Name = "deleteVertexButton";
+            this.deleteVertexButton.Size = new System.Drawing.Size(182, 24);
+            this.deleteVertexButton.TabIndex = 0;
+            this.deleteVertexButton.Text = "Usun Wierzchołek";
+            this.deleteVertexButton.UseVisualStyleBackColor = true;
+            // 
+            // deleteGraphButton
+            // 
+            this.deleteGraphButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteGraphButton.Location = new System.Drawing.Point(3, 33);
+            this.deleteGraphButton.Name = "deleteGraphButton";
+            this.deleteGraphButton.Size = new System.Drawing.Size(182, 24);
+            this.deleteGraphButton.TabIndex = 1;
+            this.deleteGraphButton.Text = "Usun Graf";
+            this.deleteGraphButton.UseVisualStyleBackColor = true;
+            this.deleteGraphButton.Click += new System.EventHandler(this.deleteGraphButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -231,6 +270,7 @@
             this.saveButton.TabIndex = 1;
             this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // pictureContainer
             // 
@@ -251,42 +291,14 @@
             this.panel1.Size = new System.Drawing.Size(584, 562);
             this.panel1.TabIndex = 4;
             // 
-            // tableLayoutPanel4
+            // saveFileDialog
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.deleteVertexButton, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.deleteGraphButton, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 48);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(188, 265);
-            this.tableLayoutPanel4.TabIndex = 1;
+            this.saveFileDialog.Filter = "Graph file | *.graph";
             // 
-            // deleteVertexButton
+            // openFileDialog
             // 
-            this.deleteVertexButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteVertexButton.Location = new System.Drawing.Point(3, 3);
-            this.deleteVertexButton.Name = "deleteVertexButton";
-            this.deleteVertexButton.Size = new System.Drawing.Size(182, 24);
-            this.deleteVertexButton.TabIndex = 0;
-            this.deleteVertexButton.Text = "Usun Wierzchołek";
-            this.deleteVertexButton.UseVisualStyleBackColor = true;
-            // 
-            // deleteGraphButton
-            // 
-            this.deleteGraphButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteGraphButton.Location = new System.Drawing.Point(3, 33);
-            this.deleteGraphButton.Name = "deleteGraphButton";
-            this.deleteGraphButton.Size = new System.Drawing.Size(182, 24);
-            this.deleteGraphButton.TabIndex = 1;
-            this.deleteGraphButton.Text = "Usun Graf";
-            this.deleteGraphButton.UseVisualStyleBackColor = true;
-            this.deleteGraphButton.Click += new System.EventHandler(this.deleteGraphButton_Click);
+            this.openFileDialog.FileName = "SavedGraph";
+            this.openFileDialog.Filter = "Graph file | *.graph";
             // 
             // Form1
             // 
@@ -305,6 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainWind)).EndInit();
             this.menuPanel.ResumeLayout(false);
             this.editBox.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.langBox.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -312,7 +325,6 @@
             this.saveBox.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,6 +351,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button deleteVertexButton;
         private System.Windows.Forms.Button deleteGraphButton;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 

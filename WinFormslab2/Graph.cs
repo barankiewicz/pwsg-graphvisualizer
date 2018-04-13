@@ -26,8 +26,12 @@ namespace WinFormslab2
             wid = _wid;
         }
 
-        public void Draw(Graphics g, string s)
+        public void Draw(Graphics g, string s, bool selected)
         {
+            var temp = new Pen(color, wid);
+            temp.DashPattern = new float[] { 1, 2, 3, 4 };
+            if (selected)
+                g.DrawEllipse(temp, new Rectangle(location, new Size(2 * r, 2 * r)));
             g.DrawEllipse(new Pen(color, wid), new Rectangle(location, new Size(2*r, 2*r)));
             PointF stringLocation = new PointF(location.X + r, location.Y + r);
             StringFormat sf = new StringFormat();
@@ -48,12 +52,14 @@ namespace WinFormslab2
         private List<Vertex> vertices;
         private int r;
         private float wid;
+        private Vertex selected;
 
         public Graph(int _r, float _wid)
         {
             vertices = new List<Vertex>();
             r = _r;
             wid = _wid;
+            selected = null;
         }
 
         public Vertex ClickedOn(Point click)
@@ -69,6 +75,11 @@ namespace WinFormslab2
             return null;
         }
 
+        public void SetSelected(Vertex v)
+        {
+            selected = v;
+        }
+
         public void AddVertex(Point loc, Color col, Graphics g)
         {
             if (ClickedOn(loc) != null)
@@ -76,14 +87,19 @@ namespace WinFormslab2
 
             Point circleLocation = new Point(loc.X - r, loc.Y - r);
             vertices.Add(new Vertex(circleLocation, r, col, wid));
-            vertices.Last().Draw(g, vertices.Count.ToString());
+            vertices.Last().Draw(g, vertices.Count.ToString(), false);
         }
 
         public void DrawGraph(Graphics g)
         {
             for(int i = 0; i < vertices.Count; i++)
             {
-                vertices[i].Draw(g, (i + 1).ToString());
+                if(selected != null && vertices[i] == selected) //If selected, we want to draw it differently
+                {
+                    vertices[i].Draw(g, (i + 1).ToString(), true);
+                    continue;
+                }
+                vertices[i].Draw(g, (i + 1).ToString(), false);
             }
         }
 

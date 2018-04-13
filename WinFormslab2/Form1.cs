@@ -33,6 +33,7 @@ namespace WinFormslab2
             mainWind.Height = area.Height;
             colorShower.BackColor = Color.Black;
             g = mainWind.CreateGraphics();
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             r = 15;
             wid = 3.5f;
@@ -57,7 +58,23 @@ namespace WinFormslab2
         private void mainWind_MouseDown(object sender, MouseEventArgs e)
         {
             var loc = e.Location;
-            graph.AddVertex(e.Location, colorShower.BackColor, g);
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    graph.AddVertex(e.Location, colorShower.BackColor, g);
+                    break;
+                case MouseButtons.Right:
+                    var v = graph.ClickedOn(loc);
+                    if(v!=null)
+                    {
+                        graph.SetSelected(v);
+                        mainWind.Refresh();
+                        graph.DrawGraph(g);
+                    }
+                    break;
+                case MouseButtons.Middle:
+                    break;
+            }
         }
 
         private void deleteGraphButton_Click(object sender, EventArgs e)
@@ -76,9 +93,11 @@ namespace WinFormslab2
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                try{
+                try
+                {
                     graph = Graph.ReadFromFile(openFileDialog.FileName);
-                } catch (SerializationException)
+                }
+                catch (SerializationException)
                 {
                     MessageBox.Show("Uszkodzony plik .graph!", "Uszkodzony plik.graph!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

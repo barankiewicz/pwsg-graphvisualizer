@@ -26,6 +26,7 @@ namespace WinFormslab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             deleteVertexButton.Enabled = false;
             middleClicked = false;
             menuPanel.Width = (int)(this.Width * 0.2);
@@ -54,7 +55,7 @@ namespace WinFormslab2
 
         private void colorButton_Click(object sender, EventArgs e)
         {
-            if(colorDialog1.ShowDialog() == DialogResult.OK)
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 colorShower.BackColor = colorDialog1.Color;
 
@@ -74,7 +75,7 @@ namespace WinFormslab2
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    if(graph.ClickedOn(loc) == null)
+                    if (graph.ClickedOn(loc) == null)
                         graph.AddVertex(e.Location, colorShower.BackColor, g);
                     else
                     {
@@ -104,7 +105,7 @@ namespace WinFormslab2
                         deleteVertexButton.Enabled = false;
                         graph.SetSelected(null);
                     }
-                        
+
 
                     mainWind.Refresh();
                     graph.DrawGraph(g);
@@ -123,7 +124,7 @@ namespace WinFormslab2
         void middleClick(Vertex v)
         {
             Timer t = new Timer();
-            while(middleClicked)
+            while (middleClicked)
             {
                 mainWind.Refresh();
                 v.SetLocation(Cursor.Position);
@@ -145,7 +146,7 @@ namespace WinFormslab2
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if(saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 Graph.WriteToFile(graph, saveFileDialog.FileName);
         }
 
@@ -162,14 +163,14 @@ namespace WinFormslab2
                     MessageBox.Show("Uszkodzony plik .graph!", "Uszkodzony plik.graph!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-                
+
             mainWind.Refresh();
             graph.DrawGraph(g);
         }
 
         private void deleteVertexButton_Click(object sender, EventArgs e)
         {
-            if(graph.GetSelected() != null)
+            if (graph.GetSelected() != null)
             {
                 graph.DeleteVertex(graph.GetSelected());
                 graph.SetSelected(null);
@@ -181,19 +182,7 @@ namespace WinFormslab2
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Control && graph.GetSelected() != null)
-            {
-                graph.DeleteVertex(graph.GetSelected());
-                graph.SetSelected(null);
-                deleteVertexButton.Enabled = false;
-                mainWind.Refresh();
-                graph.DrawGraph(g);
-            }
-        }
-
-        private void mainWind_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            if (e.KeyCode == Keys.Control && graph.GetSelected() != null)
+            if (e.KeyCode == Keys.Delete && graph.GetSelected() != null)
             {
                 graph.DeleteVertex(graph.GetSelected());
                 graph.SetSelected(null);

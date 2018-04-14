@@ -75,7 +75,6 @@
             this.mainWind.TabStop = false;
             this.mainWind.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseDown);
             this.mainWind.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseUp);
-            this.mainWind.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.mainWind_PreviewKeyDown);
             // 
             // menuPanel
             // 

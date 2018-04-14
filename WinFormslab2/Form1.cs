@@ -17,6 +17,7 @@ namespace WinFormslab2
         float wid;
         Graph graph;
         Graphics g;
+        bool middleClicked;
 
         public Form1()
         {
@@ -25,6 +26,7 @@ namespace WinFormslab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            middleClicked = false;
             menuPanel.Width = (int)(this.Width * 0.2);
             pictureContainer.Width = (int)(this.Width * 0.8);
             Screen myScreen = Screen.FromControl(this);
@@ -95,8 +97,31 @@ namespace WinFormslab2
                     graph.DrawGraph(g);
                     break;
                 case MouseButtons.Middle:
+                    Vertex ver = graph.ClickedOn(loc);
+                    if (ver != null)
+                    {
+                        middleClicked = true;
+                        middleClick(ver);
+                    }
                     break;
             }
+        }
+
+        void middleClick(Vertex v)
+        {
+            Timer t = new Timer();
+            while(middleClicked)
+            {
+                mainWind.Refresh();
+                v.SetLocation(Cursor.Position);
+                graph.DrawGraph(g);
+            }
+        }
+
+        private void mainWind_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Middle)
+                middleClicked = false;
         }
 
         private void deleteGraphButton_Click(object sender, EventArgs e)

@@ -50,6 +50,12 @@ namespace WinFormslab2
             return newLoc;
         }
 
+        public void SetLocation(Point loc)
+        {
+            loc.Offset(r, r);
+            location = loc;
+        }
+
         public void SetColor(Color _color)
         {
             color = _color;

@@ -28,6 +28,7 @@ namespace WinFormslab2
 
         public void Draw(Graphics g, string s, bool selected)
         {
+            g.FillEllipse(new SolidBrush(Color.White), new Rectangle(location, new Size(2 * r, 2 * r)));
             var temp = new Pen(color, wid);
             temp.DashPattern = new float[] { 1, 1.2f };
             if (selected)
@@ -128,7 +129,10 @@ namespace WinFormslab2
 
         public void DrawGraph(Graphics g)
         {
-            for(int i = 0; i < vertices.Count; i++)
+            foreach (Edge e in edges)
+                e.Draw(g);
+
+            for (int i = 0; i < vertices.Count; i++)
             {
                 if(selected != null && vertices[i] == selected) //If selected, we want to draw it differently
                 {
@@ -137,9 +141,6 @@ namespace WinFormslab2
                 }
                 vertices[i].Draw(g, (i + 1).ToString(), false);
             }
-
-            foreach (Edge e in edges)
-                e.Draw(g);
         }
 
         public bool ExistEdge(Vertex v1, Vertex v2)

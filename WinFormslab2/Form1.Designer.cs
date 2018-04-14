@@ -75,6 +75,7 @@
             this.mainWind.TabStop = false;
             this.mainWind.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseDown);
             this.mainWind.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseUp);
+            this.mainWind.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.mainWind_PreviewKeyDown);
             // 
             // menuPanel
             // 
@@ -131,6 +132,7 @@
             this.deleteVertexButton.TabIndex = 0;
             this.deleteVertexButton.Text = "Usun Wierzchołek";
             this.deleteVertexButton.UseVisualStyleBackColor = true;
+            this.deleteVertexButton.Click += new System.EventHandler(this.deleteVertexButton_Click);
             // 
             // deleteGraphButton
             // 
@@ -316,6 +318,7 @@
             this.Text = "Edytor Grafów";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.mainWind)).EndInit();
             this.menuPanel.ResumeLayout(false);
             this.editBox.ResumeLayout(false);

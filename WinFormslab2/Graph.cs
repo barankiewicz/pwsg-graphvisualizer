@@ -136,6 +136,19 @@ namespace WinFormslab2
             vertices.Last().Draw(g, vertices.Count.ToString(), false);
         }
 
+        public void DeleteVertex(Vertex v)
+        {
+            List<Edge> temp = new List<Edge>();
+            for (int i = 0; i < edges.Count; i++)
+                if (edges[i].from == v || edges[i].to == v)
+                    temp.Add(edges[i]);
+
+            foreach (Edge e in temp)
+                edges.Remove(e);
+
+            vertices.Remove(v);
+        }
+
         public void DrawVertex(Vertex v, Graphics g)
         {
             for(int i = 0; i < vertices.Count; i++)

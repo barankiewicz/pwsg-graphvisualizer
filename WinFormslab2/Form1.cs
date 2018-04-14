@@ -26,6 +26,7 @@ namespace WinFormslab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            deleteVertexButton.Enabled = false;
             middleClicked = false;
             menuPanel.Width = (int)(this.Width * 0.2);
             pictureContainer.Width = (int)(this.Width * 0.8);
@@ -94,9 +95,16 @@ namespace WinFormslab2
                     var v = graph.ClickedOn(loc);
 
                     if (v != null)
+                    {
+                        deleteVertexButton.Enabled = true;
                         graph.SetSelected(v);
+                    }
                     else
+                    {
+                        deleteVertexButton.Enabled = false;
                         graph.SetSelected(null);
+                    }
+                        
 
                     mainWind.Refresh();
                     graph.DrawGraph(g);
@@ -157,6 +165,42 @@ namespace WinFormslab2
                 
             mainWind.Refresh();
             graph.DrawGraph(g);
+        }
+
+        private void deleteVertexButton_Click(object sender, EventArgs e)
+        {
+            if(graph.GetSelected() != null)
+            {
+                graph.DeleteVertex(graph.GetSelected());
+                graph.SetSelected(null);
+                deleteVertexButton.Enabled = false;
+                mainWind.Refresh();
+                graph.DrawGraph(g);
+            }
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Control && graph.GetSelected() != null)
+            {
+                graph.DeleteVertex(graph.GetSelected());
+                graph.SetSelected(null);
+                deleteVertexButton.Enabled = false;
+                mainWind.Refresh();
+                graph.DrawGraph(g);
+            }
+        }
+
+        private void mainWind_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Control && graph.GetSelected() != null)
+            {
+                graph.DeleteVertex(graph.GetSelected());
+                graph.SetSelected(null);
+                deleteVertexButton.Enabled = false;
+                mainWind.Refresh();
+                graph.DrawGraph(g);
+            }
         }
     }
 }

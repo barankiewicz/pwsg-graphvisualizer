@@ -14,15 +14,18 @@ namespace WinFormslab2
     class Vertex
     {
         private Color color;
-        private Point location;
-        private int r;
+        private Point locc;
+        private int pro;
         private float wid;
+
+        public int r { get { return pro; } }
+        public Point location { get { return locc; } }
 
         public Vertex(Point _loc, int _r, Color _col, float _wid)
         {
             color = _col;
-            location = _loc;
-            r = _r;
+            locc = _loc;
+            pro = _r;
             wid = _wid;
         }
 
@@ -53,7 +56,7 @@ namespace WinFormslab2
         public void SetLocation(Point loc)
         {
             loc.Offset(r, r);
-            location = loc;
+            locc = loc;
         }
 
         public void SetColor(Color _color)
@@ -131,6 +134,13 @@ namespace WinFormslab2
             Point circleLocation = new Point(loc.X - r, loc.Y - r);
             vertices.Add(new Vertex(circleLocation, r, col, wid));
             vertices.Last().Draw(g, vertices.Count.ToString(), false);
+        }
+
+        public void DrawVertex(Vertex v, Graphics g)
+        {
+            for(int i = 0; i < vertices.Count; i++)
+                if(vertices[i] == v)
+                    v.Draw(g, (i + 1).ToString(), v == selected);
         }
 
         public void DrawGraph(Graphics g)

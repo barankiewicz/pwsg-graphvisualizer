@@ -77,9 +77,14 @@ namespace WinFormslab2
                         graph.AddVertex(e.Location, colorShower.BackColor, g);
                     else
                     {
-                        bool fl = graph.AddEdge(graph.ClickedOn(loc), graph.GetSelected(), g);
+                        Vertex clicked = graph.ClickedOn(loc);
+                        bool fl = graph.AddEdge(clicked, graph.GetSelected(), g);
                         if (fl)
+                        {
+                            graph.DrawVertex(clicked, g);
+                            graph.DrawVertex(graph.GetSelected(), g);
                             return;
+                        }
                         mainWind.Refresh();
                         graph.DrawGraph(g);
                     }

@@ -17,7 +17,9 @@ namespace WinFormslab2
         float wid;
         Graph graph;
         Graphics g;
-        bool middleClicked;
+        Vertex middleClicked;
+        Point curClick;
+        Timer timer;
 
         public Form1()
         {
@@ -26,9 +28,10 @@ namespace WinFormslab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            curClick = new Point(0,0);
             this.KeyPreview = true;
             deleteVertexButton.Enabled = false;
-            middleClicked = false;
+            middleClicked = null;
             menuPanel.Width = (int)(this.Width * 0.2);
             pictureContainer.Width = (int)(this.Width * 0.8);
             Screen myScreen = Screen.FromControl(this);
@@ -38,10 +41,23 @@ namespace WinFormslab2
             colorShower.BackColor = Color.Black;
             g = mainWind.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            timer = new Timer();
+            timer.Interval = (150); // 10 secs
+            timer.Tick += new EventHandler(timer_Tick);
 
             r = 15;
             wid = 3.5f;
             graph = new Graph(r, wid);
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            Point cursorLoc = curClick;
+            Vertex ver = graph.ClickedOn(cursorLoc);
+            mainWind.Refresh();
+            ver.SetLocation(cursorLoc);
+            graph.DrawGraph(g);
+            curClick = ver.location;
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -114,28 +130,18 @@ namespace WinFormslab2
                     Vertex ver = graph.ClickedOn(loc);
                     if (ver != null)
                     {
-                        middleClicked = true;
-                        middleClick(ver);
+                        curClick = loc;
+                        middleClicked = ver;
+                        timer.Start();
                     }
                     break;
-            }
-        }
-
-        void middleClick(Vertex v)
-        {
-            Timer t = new Timer();
-            while (middleClicked)
-            {
-                mainWind.Refresh();
-                v.SetLocation(Cursor.Position);
-                graph.DrawGraph(g);
             }
         }
 
         private void mainWind_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Middle)
-                middleClicked = false;
+                timer.Stop();
         }
 
         private void deleteGraphButton_Click(object sender, EventArgs e)

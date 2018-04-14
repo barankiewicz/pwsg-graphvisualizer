@@ -29,6 +29,14 @@ namespace WinFormslab2
             wid = _wid;
         }
 
+        public Vertex()
+        {
+            color = Color.Black;
+            locc = new Point(0, 0);
+            pro = 30;
+            wid = 3.5f;
+        }
+
         public void Draw(Graphics g, string s, bool selected)
         {
             g.FillEllipse(new SolidBrush(Color.White), new Rectangle(location, new Size(2 * r, 2 * r)));

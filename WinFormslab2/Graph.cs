@@ -124,6 +124,11 @@ namespace WinFormslab2
             return null;
         }
 
+        public Point GetCenter(Point p)
+        {
+            return new Point(p.X - 2*r, p.Y - 2*r);
+        }
+
         public void SetSelected(Vertex v)
         {
             selected = v;

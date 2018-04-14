@@ -17,9 +17,10 @@ namespace WinFormslab2
         float wid;
         Graph graph;
         Graphics g;
+        bool isMiddleClicked;
         Vertex middleClicked;
         Point curClick;
-        Timer timer;
+        Point outOfBoundPos;
 
         public Form1()
         {
@@ -28,6 +29,8 @@ namespace WinFormslab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            outOfBoundPos = new Point();
+            isMiddleClicked = false;
             curClick = new Point(0,0);
             this.KeyPreview = true;
             deleteVertexButton.Enabled = false;
@@ -41,23 +44,10 @@ namespace WinFormslab2
             colorShower.BackColor = Color.Black;
             g = mainWind.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            timer = new Timer();
-            timer.Interval = (150); // 10 secs
-            timer.Tick += new EventHandler(timer_Tick);
 
             r = 15;
             wid = 3.5f;
             graph = new Graph(r, wid);
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            Point cursorLoc = curClick;
-            Vertex ver = graph.ClickedOn(cursorLoc);
-            mainWind.Refresh();
-            ver.SetLocation(cursorLoc);
-            graph.DrawGraph(g);
-            curClick = ver.location;
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -122,17 +112,17 @@ namespace WinFormslab2
                         graph.SetSelected(null);
                     }
 
-
                     mainWind.Refresh();
                     graph.DrawGraph(g);
                     break;
                 case MouseButtons.Middle:
-                    Vertex ver = graph.ClickedOn(loc);
+                    Vertex ver = graph.GetSelected();
                     if (ver != null)
                     {
                         curClick = loc;
                         middleClicked = ver;
-                        timer.Start();
+                        isMiddleClicked = true;
+                        //timer.Start();
                     }
                     break;
             }
@@ -140,8 +130,7 @@ namespace WinFormslab2
 
         private void mainWind_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Middle)
-                timer.Stop();
+            isMiddleClicked = false;
         }
 
         private void deleteGraphButton_Click(object sender, EventArgs e)
@@ -196,6 +185,23 @@ namespace WinFormslab2
                 mainWind.Refresh();
                 graph.DrawGraph(g);
             }
+        }
+
+        private void mainWind_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Middle)
+            {
+                if (middleClicked == null)
+                    return;
+                middleClicked.SetLocation(graph.GetCenter(e.Location));
+                mainWind.Refresh();
+                graph.DrawGraph(g);
+            }
+        }
+
+        private void mainWind_MouseLeave(object sender, EventArgs e)
+        {
+            outOfBoundPos = Cursor.Position;
         }
     }
 }

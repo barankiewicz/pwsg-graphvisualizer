@@ -74,6 +74,8 @@
             this.mainWind.TabIndex = 1;
             this.mainWind.TabStop = false;
             this.mainWind.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseDown);
+            this.mainWind.MouseLeave += new System.EventHandler(this.mainWind_MouseLeave);
+            this.mainWind.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseMove);
             this.mainWind.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseUp);
             // 
             // menuPanel

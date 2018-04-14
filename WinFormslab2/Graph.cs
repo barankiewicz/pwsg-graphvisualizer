@@ -213,6 +213,7 @@ namespace WinFormslab2
 
         public static void WriteToFile(Graph graph, string path)
         {
+            graph.SetSelected(null);
             var fs = new FileStream(path, FileMode.Create, FileAccess.Write);
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(fs, graph);

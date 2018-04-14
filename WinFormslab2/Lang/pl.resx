@@ -117,4 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="colorBtn" xml:space="preserve">
+    <value>Kolor</value>
+  </data>
+  <data name="delGr" xml:space="preserve">
+    <value>Usun Graf</value>
+  </data>
+  <data name="delVer" xml:space="preserve">
+    <value>Usun Wierzchołek</value>
+  </data>
+  <data name="errMessage" xml:space="preserve">
+    <value>Uszkodzony plik .graph!</value>
+  </data>
+  <data name="fileExp" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="fileImp" xml:space="preserve">
+    <value>Wczytaj</value>
+  </data>
+  <data name="langEn" xml:space="preserve">
+    <value>Angielski</value>
+  </data>
+  <data name="langPl" xml:space="preserve">
+    <value>Polski</value>
+  </data>
+  <data name="mainText" xml:space="preserve">
+    <value>Edytor Grafów</value>
+  </data>
+  <data name="menuEdit" xml:space="preserve">
+    <value>Edycja</value>
+  </data>
+  <data name="menuFile" xml:space="preserve">
+    <value>Import/Eksport</value>
+  </data>
+  <data name="menuLang" xml:space="preserve">
+    <value>Język</value>
+  </data>
 </root>

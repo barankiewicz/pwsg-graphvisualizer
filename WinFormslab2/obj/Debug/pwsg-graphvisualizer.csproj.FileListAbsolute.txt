@@ -8,3 +8,6 @@ X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\pwsg-graphvi
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\pwsg-graphvisualizer.csproj.CoreCompileInputs.cache
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\WinFormslab2.exe
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\WinFormslab2.pdb
+X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\bin\Debug\GraphEditor.resources.dll
+X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\WinFormslab2.Lang.pl.resources
+X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\WinFormslab2.Lang.en.resources

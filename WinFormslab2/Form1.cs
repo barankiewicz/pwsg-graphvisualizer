@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,7 +25,8 @@ namespace WinFormslab2
         bool isMiddleClicked;
         Vertex middleClicked;
         Point curClick;
-        Point outOfBoundPos;
+        Stopwatch st;
+        string errorMessage;
 
         public Form1()
         {
@@ -29,7 +35,9 @@ namespace WinFormslab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            outOfBoundPos = new Point();
+            
+            st = new Stopwatch();
+            SetStyle(ControlStyles.DoubleBuffer, true);
             isMiddleClicked = false;
             curClick = new Point(0,0);
             this.KeyPreview = true;
@@ -45,6 +53,20 @@ namespace WinFormslab2
             g = mainWind.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
+            CultureInfo pl = new CultureInfo("pl-PL");
+            Assembly a = Assembly.Load("WinFormsLab2");
+            ResourceManager rm = new ResourceManager("WinFormsLab2.Lang.pl", a);
+            this.Text = rm.GetString("mainText");
+            colorButton.Text = rm.GetString("colorBtn");
+            deleteGraphButton.Text = rm.GetString("delGr");
+            deleteVertexButton.Text = rm.GetString("delVer");
+            saveButton.Text = rm.GetString("fileExp");
+            importButton.Text = rm.GetString("fileImp");
+            editBox.Text = rm.GetString("menuEdit");
+            langBox.Text = rm.GetString("menuLang");
+            saveBox.Text = rm.GetString("menuFile");
+            errorMessage = rm.GetString("errMessage");
+
             r = 15;
             wid = 3.5f;
             graph = new Graph(r, wid);
@@ -54,7 +76,7 @@ namespace WinFormslab2
         {
             menuPanel.Width = (int)(this.Width * 0.2);
             mainWind.Width = (int)(this.Width * 0.8);
-
+            
             mainWind.Refresh();
             graph.DrawGraph(g);
         }
@@ -69,6 +91,7 @@ namespace WinFormslab2
                 if (v != null)
                 {
                     v.SetColor(colorDialog1.Color);
+                    
                     mainWind.Refresh();
                     graph.DrawGraph(g);
                 }
@@ -93,6 +116,7 @@ namespace WinFormslab2
                             graph.DrawVertex(graph.GetSelected(), g);
                             return;
                         }
+                        
                         mainWind.Refresh();
                         graph.DrawGraph(g);
                     }
@@ -111,7 +135,7 @@ namespace WinFormslab2
                         deleteVertexButton.Enabled = false;
                         graph.SetSelected(null);
                     }
-
+                    
                     mainWind.Refresh();
                     graph.DrawGraph(g);
                     break;
@@ -122,7 +146,7 @@ namespace WinFormslab2
                         curClick = loc;
                         middleClicked = ver;
                         isMiddleClicked = true;
-                        //timer.Start();
+                        st.Start();
                     }
                     break;
             }
@@ -131,6 +155,8 @@ namespace WinFormslab2
         private void mainWind_MouseUp(object sender, MouseEventArgs e)
         {
             isMiddleClicked = false;
+            curClick = new Point(0, 0);
+            st.Reset();
         }
 
         private void deleteGraphButton_Click(object sender, EventArgs e)
@@ -155,10 +181,10 @@ namespace WinFormslab2
                 }
                 catch (SerializationException)
                 {
-                    MessageBox.Show("Uszkodzony plik .graph!", "Uszkodzony plik.graph!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(errorMessage, errorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
+            
             mainWind.Refresh();
             graph.DrawGraph(g);
         }
@@ -170,6 +196,7 @@ namespace WinFormslab2
                 graph.DeleteVertex(graph.GetSelected());
                 graph.SetSelected(null);
                 deleteVertexButton.Enabled = false;
+                
                 mainWind.Refresh();
                 graph.DrawGraph(g);
             }
@@ -182,6 +209,7 @@ namespace WinFormslab2
                 graph.DeleteVertex(graph.GetSelected());
                 graph.SetSelected(null);
                 deleteVertexButton.Enabled = false;
+                
                 mainWind.Refresh();
                 graph.DrawGraph(g);
             }
@@ -193,15 +221,54 @@ namespace WinFormslab2
             {
                 if (middleClicked == null)
                     return;
-                middleClicked.SetLocation(graph.GetCenter(e.Location));
-                mainWind.Refresh();
-                graph.DrawGraph(g);
+                if(st.ElapsedMilliseconds >= 16)
+                {
+                    Point offset = new Point(e.Location.X - curClick.X, e.Location.Y - curClick.Y);
+                    middleClicked.SetLocation(graph.GetCenter(e.Location));
+                    curClick = e.Location;
+                    mainWind.Refresh();
+                    graph.DrawGraph(g);
+                    st.Restart();
+                }
             }
         }
 
         private void mainWind_MouseLeave(object sender, EventArgs e)
         {
-            outOfBoundPos = Cursor.Position;
+        }
+
+        private void plLangButton_Click(object sender, EventArgs e)
+        {
+            CultureInfo pl = new CultureInfo("pl-PL");
+            Assembly a = Assembly.Load("WinFormsLab2");
+            ResourceManager rm = new ResourceManager("WinFormsLab2.Lang.pl", a);
+            this.Text = rm.GetString("mainText");
+            colorButton.Text = rm.GetString("colorBtn");
+            deleteGraphButton.Text = rm.GetString("delGr");
+            deleteVertexButton.Text = rm.GetString("delVer");
+            saveButton.Text = rm.GetString("fileExp");
+            importButton.Text = rm.GetString("fileImp");
+            editBox.Text = rm.GetString("menuEdit");
+            langBox.Text = rm.GetString("menuLang");
+            saveBox.Text = rm.GetString("menuFile");
+            errorMessage = rm.GetString("errMessage");
+        }
+
+        private void engLangButton_Click(object sender, EventArgs e)
+        {
+            CultureInfo pl = new CultureInfo("en-EN");
+            Assembly a = Assembly.Load("WinFormsLab2");
+            ResourceManager rm = new ResourceManager("WinFormsLab2.Lang.en", a);
+            this.Text = rm.GetString("mainText");
+            colorButton.Text = rm.GetString("colorBtn");
+            deleteGraphButton.Text = rm.GetString("delGr");
+            deleteVertexButton.Text = rm.GetString("delVer");
+            saveButton.Text = rm.GetString("fileExp");
+            importButton.Text = rm.GetString("fileImp");
+            editBox.Text = rm.GetString("menuEdit");
+            langBox.Text = rm.GetString("menuLang");
+            saveBox.Text = rm.GetString("menuFile");
+            errorMessage = rm.GetString("errMessage");
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.mainWind = new System.Windows.Forms.PictureBox();
             this.menuPanel = new System.Windows.Forms.TableLayoutPanel();
             this.editBox = new System.Windows.Forms.GroupBox();
@@ -64,14 +65,9 @@
             // 
             // mainWind
             // 
-            this.mainWind.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.mainWind, "mainWind");
             this.mainWind.BackColor = System.Drawing.Color.White;
-            this.mainWind.Location = new System.Drawing.Point(0, 0);
             this.mainWind.Name = "mainWind";
-            this.mainWind.Size = new System.Drawing.Size(584, 562);
-            this.mainWind.TabIndex = 1;
             this.mainWind.TabStop = false;
             this.mainWind.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainWind_MouseDown);
             this.mainWind.MouseLeave += new System.EventHandler(this.mainWind_MouseLeave);
@@ -80,243 +76,146 @@
             // 
             // menuPanel
             // 
+            resources.ApplyResources(this.menuPanel, "menuPanel");
             this.menuPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.menuPanel.ColumnCount = 1;
-            this.menuPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.menuPanel.Controls.Add(this.editBox, 0, 0);
             this.menuPanel.Controls.Add(this.langBox, 0, 1);
             this.menuPanel.Controls.Add(this.saveBox, 0, 2);
-            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.menuPanel.Location = new System.Drawing.Point(584, 0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.RowCount = 3;
-            this.menuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.menuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.menuPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.menuPanel.Size = new System.Drawing.Size(200, 562);
-            this.menuPanel.TabIndex = 2;
             // 
             // editBox
             // 
+            resources.ApplyResources(this.editBox, "editBox");
             this.editBox.Controls.Add(this.tableLayoutPanel4);
             this.editBox.Controls.Add(this.tableLayoutPanel1);
-            this.editBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editBox.Location = new System.Drawing.Point(3, 3);
             this.editBox.Name = "editBox";
-            this.editBox.Size = new System.Drawing.Size(194, 316);
-            this.editBox.TabIndex = 0;
             this.editBox.TabStop = false;
-            this.editBox.Text = "Edycja";
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            resources.ApplyResources(this.tableLayoutPanel4, "tableLayoutPanel4");
             this.tableLayoutPanel4.Controls.Add(this.deleteVertexButton, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.deleteGraphButton, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 48);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(188, 265);
-            this.tableLayoutPanel4.TabIndex = 1;
             // 
             // deleteVertexButton
             // 
-            this.deleteVertexButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteVertexButton.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.deleteVertexButton, "deleteVertexButton");
             this.deleteVertexButton.Name = "deleteVertexButton";
-            this.deleteVertexButton.Size = new System.Drawing.Size(182, 24);
-            this.deleteVertexButton.TabIndex = 0;
-            this.deleteVertexButton.Text = "Usun Wierzchołek";
             this.deleteVertexButton.UseVisualStyleBackColor = true;
             this.deleteVertexButton.Click += new System.EventHandler(this.deleteVertexButton_Click);
             // 
             // deleteGraphButton
             // 
-            this.deleteGraphButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteGraphButton.Location = new System.Drawing.Point(3, 33);
+            resources.ApplyResources(this.deleteGraphButton, "deleteGraphButton");
             this.deleteGraphButton.Name = "deleteGraphButton";
-            this.deleteGraphButton.Size = new System.Drawing.Size(182, 24);
-            this.deleteGraphButton.TabIndex = 1;
-            this.deleteGraphButton.Text = "Usun Graf";
             this.deleteGraphButton.UseVisualStyleBackColor = true;
             this.deleteGraphButton.Click += new System.EventHandler(this.deleteGraphButton_Click);
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.colorShower, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.colorButton, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(188, 32);
-            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // colorShower
             // 
-            this.colorShower.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorShower.Location = new System.Drawing.Point(124, 3);
+            resources.ApplyResources(this.colorShower, "colorShower");
             this.colorShower.Name = "colorShower";
-            this.colorShower.Size = new System.Drawing.Size(61, 24);
-            this.colorShower.TabIndex = 3;
             // 
             // colorButton
             // 
-            this.colorButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colorButton.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.colorButton, "colorButton");
             this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(115, 24);
-            this.colorButton.TabIndex = 0;
-            this.colorButton.Text = "Kolor";
             this.colorButton.UseVisualStyleBackColor = true;
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // langBox
             // 
+            resources.ApplyResources(this.langBox, "langBox");
             this.langBox.Controls.Add(this.tableLayoutPanel2);
-            this.langBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.langBox.Location = new System.Drawing.Point(3, 325);
             this.langBox.Name = "langBox";
-            this.langBox.Size = new System.Drawing.Size(194, 114);
-            this.langBox.TabIndex = 1;
             this.langBox.TabStop = false;
-            this.langBox.Text = "Język";
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            resources.ApplyResources(this.tableLayoutPanel2, "tableLayoutPanel2");
             this.tableLayoutPanel2.Controls.Add(this.plLangButton, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.engLangButton, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(188, 95);
-            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // plLangButton
             // 
-            this.plLangButton.AutoSize = true;
-            this.plLangButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plLangButton.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.plLangButton, "plLangButton");
             this.plLangButton.Name = "plLangButton";
-            this.plLangButton.Size = new System.Drawing.Size(182, 41);
-            this.plLangButton.TabIndex = 0;
-            this.plLangButton.Text = "Polski";
             this.plLangButton.UseVisualStyleBackColor = true;
+            this.plLangButton.Click += new System.EventHandler(this.plLangButton_Click);
             // 
             // engLangButton
             // 
-            this.engLangButton.AutoSize = true;
-            this.engLangButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.engLangButton.Location = new System.Drawing.Point(3, 50);
+            resources.ApplyResources(this.engLangButton, "engLangButton");
             this.engLangButton.Name = "engLangButton";
-            this.engLangButton.Size = new System.Drawing.Size(182, 42);
-            this.engLangButton.TabIndex = 1;
-            this.engLangButton.Text = "Angielski";
             this.engLangButton.UseVisualStyleBackColor = true;
+            this.engLangButton.Click += new System.EventHandler(this.engLangButton_Click);
             // 
             // saveBox
             // 
+            resources.ApplyResources(this.saveBox, "saveBox");
             this.saveBox.Controls.Add(this.tableLayoutPanel3);
-            this.saveBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveBox.Location = new System.Drawing.Point(3, 445);
             this.saveBox.Name = "saveBox";
-            this.saveBox.Size = new System.Drawing.Size(194, 114);
-            this.saveBox.TabIndex = 2;
             this.saveBox.TabStop = false;
-            this.saveBox.Text = "Import/Eksport";
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            resources.ApplyResources(this.tableLayoutPanel3, "tableLayoutPanel3");
             this.tableLayoutPanel3.Controls.Add(this.importButton, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.saveButton, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(188, 95);
-            this.tableLayoutPanel3.TabIndex = 0;
             // 
             // importButton
             // 
-            this.importButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.importButton.Location = new System.Drawing.Point(3, 50);
+            resources.ApplyResources(this.importButton, "importButton");
             this.importButton.Name = "importButton";
-            this.importButton.Size = new System.Drawing.Size(182, 42);
-            this.importButton.TabIndex = 2;
-            this.importButton.Text = "Import";
             this.importButton.UseVisualStyleBackColor = true;
             this.importButton.Click += new System.EventHandler(this.importButton_Click);
             // 
             // saveButton
             // 
-            this.saveButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.saveButton.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.saveButton, "saveButton");
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(182, 41);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // pictureContainer
             // 
-            this.pictureContainer.AutoSize = true;
-            this.pictureContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pictureContainer.Location = new System.Drawing.Point(3, 3);
+            resources.ApplyResources(this.pictureContainer, "pictureContainer");
             this.pictureContainer.Name = "pictureContainer";
-            this.pictureContainer.Size = new System.Drawing.Size(0, 0);
-            this.pictureContainer.TabIndex = 3;
             // 
             // panel1
             // 
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.mainWind);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(584, 562);
-            this.panel1.TabIndex = 4;
             // 
             // saveFileDialog
             // 
-            this.saveFileDialog.Filter = "Graph file | *.graph";
+            resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "SavedGraph";
-            this.openFileDialog.Filter = "Graph file | *.graph";
+            resources.ApplyResources(this.openFileDialog, "openFileDialog");
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 562);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureContainer);
             this.Controls.Add(this.menuPanel);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Edytor Grafów";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

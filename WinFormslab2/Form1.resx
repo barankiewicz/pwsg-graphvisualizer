@@ -131,6 +131,9 @@
   <data name="plLangButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="langBox.Text" xml:space="preserve">
+    <value>Język</value>
+  </data>
   <data name="&gt;&gt;langBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -222,8 +225,8 @@
   <data name="&gt;&gt;pictureContainer.Name" xml:space="preserve">
     <value>pictureContainer</value>
   </data>
-  <data name="editBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="deleteVertexButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="deleteGraphButton" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,30,Absolute,30,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="langBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>194, 114</value>
@@ -246,11 +249,17 @@
   <data name="&gt;&gt;colorShower.Name" xml:space="preserve">
     <value>colorShower</value>
   </data>
+  <data name="&gt;&gt;menuPanel.Name" xml:space="preserve">
+    <value>menuPanel</value>
+  </data>
   <data name="menuPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 562</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
+  </data>
+  <data name="deleteGraphButton.Text" xml:space="preserve">
+    <value>Usun Graf</value>
   </data>
   <data name="&gt;&gt;saveBox.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -282,11 +291,8 @@
   <data name="engLangButton.Text" xml:space="preserve">
     <value>Angielski</value>
   </data>
-  <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 95</value>
-  </data>
-  <data name="&gt;&gt;colorButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;langBox.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -300,26 +306,23 @@
   <data name="&gt;&gt;tableLayoutPanel4.Name" xml:space="preserve">
     <value>tableLayoutPanel4</value>
   </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="saveBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 445</value>
-  </data>
   <data name="&gt;&gt;tableLayoutPanel4.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;editBox.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="menuPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="editBox" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="langBox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="saveBox" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,100,Absolute,120,Absolute,120" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="&gt;&gt;colorButton.Name" xml:space="preserve">
+    <value>colorButton</value>
   </data>
   <data name="&gt;&gt;openFileDialog.Name" xml:space="preserve">
     <value>openFileDialog</value>
   </data>
   <data name="&gt;&gt;mainWind.Parent" xml:space="preserve">
     <value>panel1</value>
+  </data>
+  <data name="colorShower.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 95</value>
@@ -396,8 +399,8 @@
   <data name="menuPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>584, 0</value>
   </data>
-  <data name="&gt;&gt;colorButton.Name" xml:space="preserve">
-    <value>colorButton</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
     <value>editBox</value>
@@ -416,9 +419,6 @@
   </data>
   <data name="importButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 50</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
   </data>
   <data name="pictureContainer.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -459,11 +459,11 @@
   <data name="pictureContainer.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 600</value>
-  </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>584, 562</value>
+  </data>
+  <data name="menuPanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="editBox" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="langBox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="saveBox" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,100,Absolute,120,Absolute,120" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="colorShower" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="colorButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100,Absolute,67" /&gt;&lt;Rows Styles="Absolute,30,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
@@ -473,6 +473,9 @@
   </data>
   <data name="&gt;&gt;langBox.Name" xml:space="preserve">
     <value>langBox</value>
+  </data>
+  <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 95</value>
   </data>
   <data name="&gt;&gt;mainWind.Name" xml:space="preserve">
     <value>mainWind</value>
@@ -497,9 +500,6 @@
   </data>
   <data name="plLangButton.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
-  </data>
-  <data name="engLangButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -597,9 +597,6 @@
   <data name="mainWind.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;engLangButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="mainWind.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -612,8 +609,8 @@
   <data name="&gt;&gt;colorDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="colorShower.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="&gt;&gt;engLangButton.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -630,8 +627,11 @@
   <data name="pictureContainer.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="tableLayoutPanel4.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="deleteVertexButton" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="deleteGraphButton" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,30,Absolute,30,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="menuPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="saveBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 445</value>
   </data>
   <data name="deleteGraphButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 33</value>
@@ -657,11 +657,8 @@
   <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="deleteGraphButton.Text" xml:space="preserve">
-    <value>Usun Graf</value>
+  <data name="editBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -669,8 +666,8 @@
   <data name="saveButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="langBox.Text" xml:space="preserve">
-    <value>Język</value>
+  <data name="&gt;&gt;tableLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="saveBox.Text" xml:space="preserve">
     <value>Import/Eksport</value>
@@ -684,17 +681,20 @@
   <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="&gt;&gt;menuPanel.Name" xml:space="preserve">
-    <value>menuPanel</value>
+  <data name="engLangButton.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;colorButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="menuPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="&gt;&gt;colorButton.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="engLangButton.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;saveBox.Parent" xml:space="preserve">
+    <value>menuPanel</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 16</value>
@@ -702,8 +702,8 @@
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;saveBox.Parent" xml:space="preserve">
-    <value>menuPanel</value>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 600</value>
   </data>
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>274, 17</value>

@@ -23,8 +23,11 @@ namespace WinFormslab2
         Graph graph;
         Graphics g;
         bool isMiddleClicked;
+        bool isLeft;
+
         Vertex middleClicked;
         Point curClick;
+        Point outsideClick;
         Stopwatch st;
         string errorMessage;
 
@@ -35,7 +38,8 @@ namespace WinFormslab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            outsideClick = new Point();
+            isLeft = false;
             st = new Stopwatch();
             SetStyle(ControlStyles.DoubleBuffer, true);
             isMiddleClicked = false;
@@ -154,9 +158,18 @@ namespace WinFormslab2
 
         private void mainWind_MouseUp(object sender, MouseEventArgs e)
         {
-            isMiddleClicked = false;
-            curClick = new Point(0, 0);
-            st.Reset();
+            if(e.Button == MouseButtons.Middle)
+            {
+                isMiddleClicked = false;
+                curClick = new Point(0, 0);
+                if (isLeft)
+                {
+                    //middleClicked.SetLocation(graph.GetCenter(outsideClick));
+                    //mainWind.Refresh();
+                    //graph.DrawGraph(g);
+                }
+                st.Reset();
+            }
         }
 
         private void deleteGraphButton_Click(object sender, EventArgs e)
@@ -223,6 +236,9 @@ namespace WinFormslab2
                     return;
                 if(st.ElapsedMilliseconds >= 16)
                 {
+                    if(isLeft)
+                        outsideClick = e.Location;
+
                     Point offset = new Point(e.Location.X - curClick.X, e.Location.Y - curClick.Y);
                     middleClicked.SetLocation(graph.GetCenter(e.Location));
                     curClick = e.Location;
@@ -235,6 +251,13 @@ namespace WinFormslab2
 
         private void mainWind_MouseLeave(object sender, EventArgs e)
         {
+            isLeft = true;
+            outsideClick = Cursor.Position;
+        }
+        private void mainWind_MouseEnter(object sender, EventArgs e)
+        {
+            isLeft = false;
+            outsideClick = new Point();
         }
 
         private void plLangButton_Click(object sender, EventArgs e)

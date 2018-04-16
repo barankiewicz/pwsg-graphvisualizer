@@ -139,14 +139,13 @@ namespace WinFormslab2
             return selected;
         }
 
-        public void AddVertex(Point loc, Color col, Graphics g)
+        public void AddVertex(Point loc, Color col, PictureBox p)
         {
             if (ClickedOn(loc) != null)
                 return;
 
             Point circleLocation = new Point(loc.X - r, loc.Y - r);
             vertices.Add(new Vertex(circleLocation, r, col, wid));
-            vertices.Last().Draw(g, vertices.Count.ToString(), false);
         }
 
         public void DeleteVertex(Vertex v)
@@ -162,15 +161,21 @@ namespace WinFormslab2
             vertices.Remove(v);
         }
 
-        public void DrawVertex(Vertex v, Graphics g)
+        public void DrawVertex(Vertex v, PictureBox p)
         {
-            for(int i = 0; i < vertices.Count; i++)
-                if(vertices[i] == v)
-                    v.Draw(g, (i + 1).ToString(), v == selected);
+            //Graphics g = Graphics.FromImage(p.Image);
+
+            //for (int i = 0; i < vertices.Count; i++)
+            //    if(vertices[i] == v)
+            //        v.Draw(g, (i + 1).ToString(), v == selected);
         }
 
-        public void DrawGraph(Graphics g)
+        public void DrawGraph(PictureBox p)
         {
+            Bitmap bmp = new Bitmap(p.Width, p.Width);
+            Graphics g = Graphics.FromImage(bmp);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
             foreach (Edge e in edges)
                 e.Draw(g);
 
@@ -183,6 +188,11 @@ namespace WinFormslab2
                 }
                 vertices[i].Draw(g, (i + 1).ToString(), false);
             }
+
+            if(p.Image != null)
+                p.Image.Dispose();
+
+             p.Image = (Image)bmp.Clone();
         }
 
         public bool ExistEdge(Vertex v1, Vertex v2)
@@ -207,7 +217,7 @@ namespace WinFormslab2
                 }    
             }
             edges.Add(new Edge(v1, v2));
-            edges.Last().Draw(g);
+            //edges.Last().Draw(g);
             return true;
         }
 

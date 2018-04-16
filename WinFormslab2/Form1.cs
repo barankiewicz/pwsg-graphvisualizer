@@ -56,6 +56,7 @@ namespace WinFormslab2
             colorShower.BackColor = Color.Black;
             g = mainWind.CreateGraphics();
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.Clear(Color.White);
 
             CultureInfo pl = new CultureInfo("pl-PL");
             Assembly a = Assembly.Load("WinFormsLab2");
@@ -81,8 +82,8 @@ namespace WinFormslab2
             menuPanel.Width = (int)(this.Width * 0.2);
             mainWind.Width = (int)(this.Width * 0.8);
             
-            mainWind.Refresh();
-            graph.DrawGraph(g);
+            //mainWind.Refresh();
+            graph.DrawGraph(mainWind);
         }
 
         private void colorButton_Click(object sender, EventArgs e)
@@ -96,8 +97,8 @@ namespace WinFormslab2
                 {
                     v.SetColor(colorDialog1.Color);
                     
-                    mainWind.Refresh();
-                    graph.DrawGraph(g);
+                    //mainWind.Refresh();
+                    graph.DrawGraph(mainWind);
                 }
             }
         }
@@ -109,20 +110,18 @@ namespace WinFormslab2
             {
                 case MouseButtons.Left:
                     if (graph.ClickedOn(loc) == null)
-                        graph.AddVertex(e.Location, colorShower.BackColor, g);
+                    {
+                        graph.AddVertex(e.Location, colorShower.BackColor, mainWind);
+                        graph.DrawGraph(mainWind);
+                    }
+                        
                     else
                     {
                         Vertex clicked = graph.ClickedOn(loc);
                         bool fl = graph.AddEdge(clicked, graph.GetSelected(), g);
-                        if (fl)
-                        {
-                            graph.DrawVertex(clicked, g);
-                            graph.DrawVertex(graph.GetSelected(), g);
-                            return;
-                        }
                         
-                        mainWind.Refresh();
-                        graph.DrawGraph(g);
+                        //mainWind.Refresh();
+                        graph.DrawGraph(mainWind);
                     }
 
                     break;
@@ -140,8 +139,8 @@ namespace WinFormslab2
                         graph.SetSelected(null);
                     }
                     
-                    mainWind.Refresh();
-                    graph.DrawGraph(g);
+                    //mainWind.Refresh();
+                    graph.DrawGraph(mainWind);
                     break;
                 case MouseButtons.Middle:
                     Vertex ver = graph.GetSelected();
@@ -174,7 +173,7 @@ namespace WinFormslab2
 
         private void deleteGraphButton_Click(object sender, EventArgs e)
         {
-            mainWind.Refresh();
+            //mainWind.Refresh();
             graph = new Graph(r, wid);
         }
 
@@ -199,7 +198,7 @@ namespace WinFormslab2
             }
             
             mainWind.Refresh();
-            graph.DrawGraph(g);
+            graph.DrawGraph(mainWind);
         }
 
         private void deleteVertexButton_Click(object sender, EventArgs e)
@@ -210,8 +209,8 @@ namespace WinFormslab2
                 graph.SetSelected(null);
                 deleteVertexButton.Enabled = false;
                 
-                mainWind.Refresh();
-                graph.DrawGraph(g);
+                //mainWind.Refresh();
+                graph.DrawGraph(mainWind);
             }
         }
 
@@ -223,8 +222,8 @@ namespace WinFormslab2
                 graph.SetSelected(null);
                 deleteVertexButton.Enabled = false;
                 
-                mainWind.Refresh();
-                graph.DrawGraph(g);
+                //mainWind.Refresh();
+                graph.DrawGraph(mainWind);
             }
         }
 
@@ -234,7 +233,7 @@ namespace WinFormslab2
             {
                 if (middleClicked == null)
                     return;
-                if(st.ElapsedMilliseconds >= 16)
+                if(st.ElapsedMilliseconds >= 10)
                 {
                     if(isLeft)
                         outsideClick = e.Location;
@@ -242,8 +241,8 @@ namespace WinFormslab2
                     Point offset = new Point(e.Location.X - curClick.X, e.Location.Y - curClick.Y);
                     middleClicked.SetLocation(graph.GetCenter(e.Location));
                     curClick = e.Location;
-                    mainWind.Refresh();
-                    graph.DrawGraph(g);
+
+                    graph.DrawGraph(mainWind);
                     st.Restart();
                 }
             }

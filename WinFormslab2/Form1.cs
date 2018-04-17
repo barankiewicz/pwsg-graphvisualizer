@@ -24,12 +24,14 @@ namespace WinFormslab2
         Graphics g;
         bool isMiddleClicked;
         bool isLeft;
-
         Vertex middleClicked;
         Point curClick;
-        Point outsideClick;
         Stopwatch st;
         string errorMessage;
+
+        string graphLoaded = "";
+        string graphLoadFailed = "";
+        string graphSaved = "";
 
         public Form1()
         {
@@ -38,7 +40,6 @@ namespace WinFormslab2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            outsideClick = new Point();
             isLeft = false;
             st = new Stopwatch();
             SetStyle(ControlStyles.DoubleBuffer, true);
@@ -82,7 +83,6 @@ namespace WinFormslab2
             menuPanel.Width = (int)(this.Width * 0.2);
             pictureContainer.Width = (int)(this.Width * 0.8);
             
-            //mainWind.Refresh();
             graph.DrawGraph(mainWind);
         }
 
@@ -96,8 +96,6 @@ namespace WinFormslab2
                 if (v != null)
                 {
                     v.SetColor(colorDialog1.Color);
-                    
-                    //mainWind.Refresh();
                     graph.DrawGraph(mainWind);
                 }
             }
@@ -119,8 +117,7 @@ namespace WinFormslab2
                     {
                         Vertex clicked = graph.ClickedOn(loc);
                         bool fl = graph.AddEdge(clicked, graph.GetSelected(), g);
-                        
-                        //mainWind.Refresh();
+
                         graph.DrawGraph(mainWind);
                     }
 
@@ -138,8 +135,7 @@ namespace WinFormslab2
                         deleteVertexButton.Enabled = false;
                         graph.SetSelected(null);
                     }
-                    
-                    //mainWind.Refresh();
+
                     graph.DrawGraph(mainWind);
                     break;
                 case MouseButtons.Middle:
@@ -178,7 +174,7 @@ namespace WinFormslab2
                 else if (toSet.Y > contY)
                     toSet.Y = contY - 6*r;
 
-                middleClicked.SetLocation(toSet);
+                middleClicked.location = toSet;
                 graph.DrawGraph(mainWind);
                 st.Reset();
             }
@@ -186,7 +182,6 @@ namespace WinFormslab2
 
         private void deleteGraphButton_Click(object sender, EventArgs e)
         {
-            //mainWind.Refresh();
             graph = new Graph(r, wid);
         }
 
@@ -209,8 +204,7 @@ namespace WinFormslab2
                     MessageBox.Show(errorMessage, errorMessage, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            
-            mainWind.Refresh();
+
             graph.DrawGraph(mainWind);
         }
 
@@ -221,8 +215,7 @@ namespace WinFormslab2
                 graph.DeleteVertex(graph.GetSelected());
                 graph.SetSelected(null);
                 deleteVertexButton.Enabled = false;
-                
-                //mainWind.Refresh();
+
                 graph.DrawGraph(mainWind);
             }
         }
@@ -234,8 +227,7 @@ namespace WinFormslab2
                 graph.DeleteVertex(graph.GetSelected());
                 graph.SetSelected(null);
                 deleteVertexButton.Enabled = false;
-                
-                //mainWind.Refresh();
+
                 graph.DrawGraph(mainWind);
             }
         }
@@ -248,11 +240,11 @@ namespace WinFormslab2
                     return;
                 if(st.ElapsedMilliseconds >= 10)
                 {
-                    if(isLeft)
-                        outsideClick = e.Location;
-
                     Point offset = new Point(e.Location.X - curClick.X, e.Location.Y - curClick.Y);
-                    middleClicked.SetLocation(graph.GetCenter(e.Location));
+                    Point p = middleClicked.location;
+                    p.Offset(offset);
+
+                    middleClicked.location = p;
                     curClick = e.Location;
 
                     graph.DrawGraph(mainWind);
@@ -261,16 +253,7 @@ namespace WinFormslab2
             }
         }
 
-        private void mainWind_MouseLeave(object sender, EventArgs e)
-        {
-            isLeft = true;
-            outsideClick = Cursor.Position;
-        }
-        private void mainWind_MouseEnter(object sender, EventArgs e)
-        {
-            isLeft = false;
-            outsideClick = new Point();
-        }
+        //Localisation helper functions
 
         private void plLangButton_Click(object sender, EventArgs e)
         {

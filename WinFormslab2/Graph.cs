@@ -19,7 +19,7 @@ namespace WinFormslab2
         private float wid;
 
         public int r { get { return pro; } }
-        public Point location { get { return locc; }}
+        public Point location { get { return locc; } set { locc = value; } }
 
         public Vertex(Point _loc, int _r, Color _col, float _wid)
         {
@@ -161,15 +161,6 @@ namespace WinFormslab2
             vertices.Remove(v);
         }
 
-        public void DrawVertex(Vertex v, PictureBox p)
-        {
-            //Graphics g = Graphics.FromImage(p.Image);
-
-            //for (int i = 0; i < vertices.Count; i++)
-            //    if(vertices[i] == v)
-            //        v.Draw(g, (i + 1).ToString(), v == selected);
-        }
-
         public void DrawGraph(PictureBox p)
         {
             Bitmap bmp = new Bitmap(p.Width, p.Width);
@@ -219,7 +210,6 @@ namespace WinFormslab2
                 }    
             }
             edges.Add(new Edge(v1, v2));
-            //edges.Last().Draw(g);
             return true;
         }
 

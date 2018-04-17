@@ -59,5 +59,15 @@ namespace WinFormslab2.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] GraphEditor_ENresources {
+            get {
+                object obj = ResourceManager.GetObject("GraphEditor_ENresources", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

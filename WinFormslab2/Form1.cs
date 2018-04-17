@@ -80,7 +80,7 @@ namespace WinFormslab2
         private void Form1_SizeChanged(object sender, EventArgs e)
         {
             menuPanel.Width = (int)(this.Width * 0.2);
-            mainWind.Width = (int)(this.Width * 0.8);
+            pictureContainer.Width = (int)(this.Width * 0.8);
             
             //mainWind.Refresh();
             graph.DrawGraph(mainWind);
@@ -157,16 +157,29 @@ namespace WinFormslab2
 
         private void mainWind_MouseUp(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Middle)
+            if(e.Button == MouseButtons.Middle && middleClicked != null)
             {
                 isMiddleClicked = false;
                 curClick = new Point(0, 0);
-                if (isLeft)
-                {
-                    //middleClicked.SetLocation(graph.GetCenter(outsideClick));
-                    //mainWind.Refresh();
-                    //graph.DrawGraph(g);
-                }
+
+                int picX = mainWind.Width;
+                int contX = (int)(this.Width * 0.8);
+                int picY = mainWind.Height;
+                int contY = this.Height;
+                
+                var toSet = new Point(middleClicked.location.X, middleClicked.location.Y);
+                if (toSet.X < 0)
+                    toSet.X = 0;
+                else if (toSet.X > contX)
+                    toSet.X = contX - 4*r;
+
+                if (toSet.Y < 0)
+                    toSet.Y = 0;
+                else if (toSet.Y > contY)
+                    toSet.Y = contY - 6*r;
+
+                middleClicked.SetLocation(toSet);
+                graph.DrawGraph(mainWind);
                 st.Reset();
             }
         }

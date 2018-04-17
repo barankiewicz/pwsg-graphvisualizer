@@ -19,7 +19,7 @@ namespace WinFormslab2
         private float wid;
 
         public int r { get { return pro; } }
-        public Point location { get { return locc; } }
+        public Point location { get { return locc; }}
 
         public Vertex(Point _loc, int _r, Color _col, float _wid)
         {
@@ -192,7 +192,9 @@ namespace WinFormslab2
             if(p.Image != null)
                 p.Image.Dispose();
 
-             p.Image = (Image)bmp.Clone();
+            g.Dispose(); 
+
+             p.Image = (Image)bmp;
         }
 
         public bool ExistEdge(Vertex v1, Vertex v2)

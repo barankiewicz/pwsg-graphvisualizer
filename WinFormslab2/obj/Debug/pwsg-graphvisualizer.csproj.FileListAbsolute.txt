@@ -1,7 +1,6 @@
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\bin\Debug\WinFormslab2.exe.config
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\bin\Debug\WinFormslab2.exe
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\bin\Debug\WinFormslab2.pdb
-X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\pwsg-graphvisualizer.csprojResolveAssemblyReference.cache
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\WinFormslab2.Form1.resources
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\WinFormslab2.Properties.Resources.resources
 X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\pwsg-graphvisualizer.csproj.GenerateResource.Cache
@@ -24,3 +23,5 @@ C:\Users\spankie\Projekty (Programowanie)\pwsg-graphvisualizer\WinFormslab2\obj\
 C:\Users\spankie\Projekty (Programowanie)\pwsg-graphvisualizer\WinFormslab2\obj\Debug\pwsg-graphvisualizer.csproj.CoreCompileInputs.cache
 C:\Users\spankie\Projekty (Programowanie)\pwsg-graphvisualizer\WinFormslab2\obj\Debug\WinFormslab2.exe
 C:\Users\spankie\Projekty (Programowanie)\pwsg-graphvisualizer\WinFormslab2\obj\Debug\WinFormslab2.pdb
+X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\pwsg-graphvisualizer.csprojAssemblyReference.cache
+X:\Programming\C#\_pwsg\pwsg-graphvisualizer\WinFormslab2\obj\Debug\pwsg-graphvisualizer.csproj.CopyComplete
